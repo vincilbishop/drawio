@@ -1,6 +1,38 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file DriveFile.js - Google Drive File Handler
+ * @description Handles diagram files stored in Google Drive.
+ *
+ * This class provides:
+ * - Save/load diagrams from Google Drive
+ * - Version conflict detection via etag
+ * - Real-time collaboration support
+ * - File sharing and permissions
+ * - Revision history access
+ * - Thumbnail updates for Drive preview
+ *
+ * DriveFile supports:
+ * - Autosave with conflict resolution
+ * - Export restrictions for protected files
+ * - Comments and sharing permissions
+ * - File move and rename operations
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends DrawioFile
+ * @see DriveClient.js for API operations
+ * @see DriveLibrary.js for shape library variant
+ */
+
+/**
+ * Constructs a new DriveFile for Google Drive storage.
+ *
+ * DriveFile wraps a Google Drive file descriptor (desc) which contains
+ * metadata like etag, title, permissions, and revision history.
+ *
+ * @constructor
+ * @extends DrawioFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - File data (XML content).
+ * @param {Object} desc - Google Drive file descriptor/metadata.
  */
 DriveFile = function(ui, data, desc)
 {

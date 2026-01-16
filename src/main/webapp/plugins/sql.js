@@ -1,9 +1,34 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
- */
-/**
- * Parse SQL CREATE TABLE. Simple initial version for community to improve.
+ * @file sql.js - SQL to ER Diagram Plugin
+ * @description Parses SQL CREATE TABLE statements to generate entity-relationship diagrams.
+ *
+ * This plugin provides:
+ * - MySQL syntax parsing
+ * - SQL Server syntax parsing (with ALTER TABLE)
+ * - Primary key detection and marking
+ * - Foreign key relationship detection
+ * - Automatic table cell layout
+ *
+ * Supported SQL Features:
+ * - CREATE TABLE statements
+ * - PRIMARY KEY constraints (inline and separate)
+ * - FOREIGN KEY with REFERENCES
+ * - ALTER TABLE for foreign keys (SQL Server)
+ * - Column names (data types extracted but not displayed)
+ *
+ * Generated Diagram:
+ * - Each table becomes a swimlane cell
+ * - Columns shown as partial rectangle rows
+ * - PK/FK markers in left column
+ * - Foreign key references shown after column name
+ *
+ * Limitations:
+ * - Simple parser, may not handle all SQL variations
+ * - Does not draw relationship edges (manual step)
+ * - Column types not preserved in display
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
  */
 Draw.loadPlugin(function(ui) {
 

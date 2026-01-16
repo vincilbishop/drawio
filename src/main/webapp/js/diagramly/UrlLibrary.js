@@ -1,14 +1,37 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file UrlLibrary.js - Remote URL Shape Library
+ * @description UrlLibrary handles read-only shape libraries loaded from remote URLs.
+ *
+ * This class provides:
+ * - Load shape libraries from any URL
+ * - Read-only access (cannot save back to URL)
+ * - Display-friendly filename extraction from URL path
+ * - URL-based library identification
+ *
+ * UrlLibrary is used when:
+ * - Custom shape libraries are hosted remotely
+ * - Third-party libraries are loaded via URL parameter
+ * - Shared libraries are distributed via HTTP
+ *
+ * Note: UrlLibrary is read-only. The library content is loaded
+ * from the URL but cannot be modified or saved back.
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @see StorageFile.js for base class
+ * @see RemoteLibrary.js for cloud-service remote libraries
  */
+
 /**
- * Constructs a new point for the optional x and y coordinates. If no
- * coordinates are given, then the default values for <x> and <y> are used.
+ * Constructs a new UrlLibrary for URL-loaded shape libraries.
+ *
+ * UrlLibrary loads library content from a URL and provides
+ * read-only access. The filename is extracted from the URL path.
+ *
  * @constructor
- * @class Implements a basic 2D point. Known subclassers = {@link mxRectangle}.
- * @param {number} x X-coordinate of the point.
- * @param {number} y Y-coordinate of the point.
+ * @extends StorageFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - Library data loaded from URL.
+ * @param {string} title - Full URL of the library.
  */
 UrlLibrary = function(ui, data, title)
 {

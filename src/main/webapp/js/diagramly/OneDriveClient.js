@@ -1,6 +1,24 @@
 /**
- * Copyright (c) 2006-2024, JGraph Holdings Ltd
- * Copyright (c) 2006-2024, draw.io AG
+ * @file OneDriveClient.js - Microsoft OneDrive/SharePoint Integration
+ * @description Provides Microsoft OneDrive and SharePoint storage integration.
+ *
+ * This class provides:
+ * - OAuth 2.0 authentication with Microsoft Graph API
+ * - File picker for OneDrive/SharePoint browsing
+ * - Save/load diagrams to personal and business accounts
+ * - Support for both OneDrive Personal and OneDrive for Business
+ * - SharePoint document library integration
+ *
+ * OneDriveClient handles:
+ * - Multiple account types (personal, business, SharePoint)
+ * - Inline and popup picker modes
+ * - External authentication (for embedded contexts)
+ * - Endpoint detection (personal vs business)
+ *
+ * @copyright 2006-2024, JGraph Holdings Ltd
+ * @extends DrawioClient
+ * @see OneDriveFile.js for file operations
+ * @see OneDriveLibrary.js for shape library support
  */
 
 //Add a closure to hide the class private variables without changing the code a lot
@@ -9,6 +27,19 @@
 
 var _token = null;
 
+/**
+ * Constructs a new OneDriveClient for Microsoft integration.
+ *
+ * Initializes Microsoft Graph API client with appropriate scopes
+ * and determines the account type (personal/business/SharePoint).
+ *
+ * @constructor
+ * @extends DrawioClient
+ * @param {EditorUi} editorUi - The EditorUi instance.
+ * @param {boolean} [isExtAuth] - If true, uses external authentication.
+ * @param {boolean} [inlinePicker] - If true, uses inline picker instead of popup.
+ * @param {boolean} [noLogout] - If true, disables logout functionality.
+ */
 window.OneDriveClient = function(editorUi, isExtAuth, inlinePicker, noLogout)
 {
 	if (isExtAuth == null && window.urlParams != null && window.urlParams['extAuth'] == '1')

@@ -1,6 +1,30 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file OneDriveLibrary.js - OneDrive Shape Library
+ * @description Handles custom shape libraries stored in OneDrive/SharePoint.
+ *
+ * This class provides:
+ * - Save/load shape libraries to OneDrive/SharePoint
+ * - Autosave support for library modifications
+ *
+ * OneDriveLibrary extends OneDriveFile with library-specific behavior:
+ * - Always autosaves (no manual save required)
+ * - Uses same Graph API as diagram files
+ * - Empty open() implementation (libraries don't render)
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends OneDriveFile
+ * @see OneDriveFile.js for base class
+ * @see OneDriveClient.js for API operations
+ */
+
+/**
+ * Constructs a new OneDriveLibrary for Microsoft shape libraries.
+ *
+ * @constructor
+ * @extends OneDriveFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - Library data (mxlibrary XML format).
+ * @param {Object} meta - Microsoft Graph file metadata.
  */
 OneDriveLibrary = function(ui, data, meta)
 {

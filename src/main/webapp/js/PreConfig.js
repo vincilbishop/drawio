@@ -1,6 +1,33 @@
 /**
- * Copyright (c) 2006-2024, JGraph Holdings Ltd
- * Copyright (c) 2006-2024, draw.io AG
+ * @file PreConfig.js - Pre-Initialization Configuration
+ * @description Sets global configuration variables BEFORE draw.io libraries load.
+ *
+ * This file is loaded early in the bootstrap sequence to configure:
+ * - Build type (public vs enterprise)
+ * - Server URLs for export, PlantUML, etc.
+ * - Base URLs for deployment
+ * - Custom draw.io configuration
+ *
+ * Configuration Variables:
+ * - DRAWIO_PUBLIC_BUILD: true for open-source builds
+ * - EXPORT_URL: Server endpoint for image export
+ * - PLANT_URL: PlantUML server for diagram generation
+ * - DRAWIO_BASE_URL: Base path for deployment
+ * - DRAWIO_VIEWER_URL: Path to viewer.min.js
+ * - DRAWIO_LIGHTBOX_URL: URL for lightbox viewing
+ * - DRAW_MATH_URL: Path to MathJax library
+ * - DRAWIO_CONFIG: Custom configuration object
+ *
+ * Self-Hosted Deployment:
+ * Replace placeholder values with your own server URLs
+ * when deploying draw.io to your own infrastructure.
+ *
+ * @see https://www.drawio.com/doc/faq/configure-diagram-editor
+ *
+ * @copyright 2006-2024, JGraph Holdings Ltd
+ * @copyright 2006-2024, draw.io AG
+ * @see bootstrap.js for load sequence
+ * @see PostConfig.js for post-init configuration
  */
 // Overrides of global vars need to be pre-loaded
 window.DRAWIO_PUBLIC_BUILD = true;

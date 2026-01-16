@@ -1,6 +1,29 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file GitLabLibrary.js - GitLab Shape Library
+ * @description Handles custom shape libraries stored in GitLab repositories.
+ *
+ * This class provides:
+ * - Save/load shape libraries to GitLab repositories
+ * - Commit-based version control
+ *
+ * GitLabLibrary extends GitLabFile with library-specific behavior:
+ * - Direct save without data update
+ * - Empty open() implementation (libraries don't render)
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends GitLabFile
+ * @see GitLabFile.js for base class
+ * @see GitLabClient.js for API operations
+ */
+
+/**
+ * Constructs a new GitLabLibrary for GitLab shape libraries.
+ *
+ * @constructor
+ * @extends GitLabFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - Library data (mxlibrary XML format).
+ * @param {Object} meta - GitLab file metadata.
  */
 GitLabLibrary = function(ui, data, meta)
 {

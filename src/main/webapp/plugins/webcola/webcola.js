@@ -1,9 +1,32 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
- */
-/**
- * WebCola layout plugin.
+ * @file webcola.js - WebCola Constraint Layout Plugin
+ * @description Integrates WebCola library for automatic constraint-based layout.
+ *
+ * This plugin provides:
+ * - Constraint-based automatic layout
+ * - Force-directed positioning
+ * - Overlap prevention
+ * - Edge routing optimization
+ *
+ * WebCola Integration:
+ * - Loads cola.min.js (WebCola library)
+ * - mxWebColaAdaptor.js adapts mxGraph to WebCola format
+ * - mxWebColaLayout.js implements the layout algorithm
+ *
+ * Layout Features:
+ * - Respects edge constraints
+ * - Minimizes edge crossings
+ * - Prevents node overlaps
+ * - Supports animated transitions
+ *
+ * Usage:
+ * - Arrange > WebCola Layout
+ * - Applies to entire diagram or selected cells
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
+ * @see https://ialab.it.monash.edu/webcola/ for WebCola documentation
+ * @see trees/trees.js for tree-specific layout
  */
 Draw.loadPlugin(function(ui)
 {

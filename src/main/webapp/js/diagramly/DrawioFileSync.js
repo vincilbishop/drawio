@@ -1,8 +1,43 @@
 /**
- * Copyright (c) 2006-2024, draw.io AG
- * Copyright (c) 2006-2024, JGraph Holdings Ltd
- * 
- * Realtime collaboration for any file.
+ * @file DrawioFileSync.js - Real-time File Synchronization
+ * @description Provides real-time synchronization for collaborative editing.
+ *
+ * This class provides:
+ * - WebSocket-based real-time updates
+ * - Operational transformation for concurrent edits
+ * - Conflict detection and resolution
+ * - Online/offline state management
+ * - Presence tracking (who's editing)
+ * - Change notification and polling fallback
+ * - Cursor position synchronization
+ *
+ * DrawioFileSync works with any file type that supports sync:
+ * - Google Drive files
+ * - OneDrive files
+ * - Dropbox files (via polling)
+ * - Custom backends
+ *
+ * The sync protocol uses:
+ * - WebSocket for real-time communication
+ * - Diff/patch for efficient change transmission
+ * - Checksums for consistency verification
+ *
+ * @copyright 2006-2024, draw.io AG
+ * @copyright 2006-2024, JGraph Holdings Ltd
+ * @see DrawioFile.js for base file class
+ * @see DiffSync.js for diff/merge algorithms
+ */
+
+/**
+ * Constructs a new DrawioFileSync for the given file.
+ *
+ * DrawioFileSync manages real-time synchronization between multiple users
+ * editing the same file. It handles WebSocket connections, conflict resolution,
+ * and presence tracking.
+ *
+ * @constructor
+ * @extends mxEventSource
+ * @param {DrawioFile} file - The file to synchronize.
  */
 DrawioFileSync = function(file)
 {

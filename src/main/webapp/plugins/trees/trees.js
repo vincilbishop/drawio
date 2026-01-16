@@ -1,15 +1,54 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
- */
-/**
- * Mindmaps plugin.
- * 
- * Todo:
- * - Make cursor key selection more generic
- * - Handle single-cell movement on touch
- * - Move multiple cells without subtrees
- * - Make offset subtrees more generic
+ * @file trees.js - Mindmap and Tree Diagram Plugin
+ * @description Provides specialized behaviors for tree-structured diagrams.
+ *
+ * This plugin enables:
+ * - Mindmap diagrams with automatic layout
+ * - Org-chart style hierarchies
+ * - Tree-aware selection and navigation
+ * - Keyboard shortcuts for tree editing
+ *
+ * Tree Detection:
+ * - Root cells marked with treeRoot='1' attribute
+ * - Tree membership determined by traversing to root
+ * - Supports multiple independent trees per diagram
+ *
+ * Tree Behaviors:
+ * - Fold/Collapse: Hides entire subtree
+ * - Delete: Removes cell and all descendants
+ * - Move: Moves cell with entire subtree
+ * - Duplicate: Clones with proper edge reconnection
+ *
+ * Keyboard Shortcuts:
+ * - Tab: Add child node (Shift+Tab: add parent)
+ * - Enter: Add sibling (Shift+Enter: add before)
+ * - Arrow keys: Navigate between tree nodes
+ * - Alt+Shift+X: Select children
+ * - Alt+Shift+S: Select siblings
+ * - Alt+Shift+P: Select parent
+ * - Alt+Shift+T: Select subtree
+ *
+ * Direction Support:
+ * - Detects tree direction from incoming edge angle
+ * - Supports: East, West, North, South orientations
+ * - Layout adjusts based on detected direction
+ *
+ * Sidebar Palette:
+ * - Central Idea (tree root)
+ * - Branch (for mindmaps)
+ * - Sub Topic (rounded)
+ * - Organization (org chart root)
+ * - Division (org chart nodes)
+ * - Tree Root / Sub Tree (generic trees)
+ *
+ * Known Limitations (TODO):
+ * - Cursor key selection could be more generic
+ * - Single-cell touch movement needs work
+ * - Multiple cells move with subtrees (by design)
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
+ * @see webcola/webcola.js for constraint-based tree layout
  */
 Draw.loadPlugin(function(ui)
 {

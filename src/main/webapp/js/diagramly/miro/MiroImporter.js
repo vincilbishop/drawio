@@ -1,6 +1,37 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
+ * @file MiroImporter.js - Miro Board Import
+ * @description Converts Miro board JSON data to draw.io diagram format.
+ *
+ * This class provides:
+ * - Miro shape-to-draw.io conversion
+ * - Flowchart shape mapping
+ * - AWS architecture icon support
+ * - Card and sticky note handling
+ * - Connector/relationship conversion
+ * - Style mapping from Miro format
+ *
+ * MiroImporter handles Miro element types:
+ * - Shapes (rectangles, ellipses, flowchart)
+ * - Cards and stickers
+ * - Text elements
+ * - Connectors and lines
+ * - AWS/cloud architecture icons
+ *
+ * The importer uses mapping tables to convert:
+ * - stencilsMap: Miro stencil names → mxGraph shapes
+ * - typeStylesMap: Custom handlers for specific types
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @see Extensions.js for LucidImporter
+ * @see EditorUi.js for import orchestration
+ */
+
+/**
+ * Constructs a new MiroImporter for Miro board conversion.
+ *
+ * Initializes shape mapping tables and style converters.
+ *
+ * @constructor
  */
 function MiroImporter()
 {

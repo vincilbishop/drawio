@@ -1,6 +1,37 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file TrelloFile.js - Trello Card Attachment Handler
+ * @description Handles diagram files stored as Trello card attachments.
+ *
+ * This class provides:
+ * - Save/load diagrams as Trello card attachments
+ * - Autosave support
+ * - Counter-based save tracking
+ *
+ * TrelloFile metadata (meta) contains:
+ * - compoundId: cardId|$|attachmentId format
+ * - name: Attachment filename
+ * - bytes: File size
+ *
+ * Note: Files are not renamable since they're tied to
+ * Trello card attachments which have fixed names.
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends DrawioFile
+ * @see TrelloClient.js for API operations
+ * @see TrelloLibrary.js for shape library variant
+ */
+
+/**
+ * Constructs a new TrelloFile for Trello storage.
+ *
+ * TrelloFile wraps a Trello attachment metadata object and
+ * tracks save operations via a counter.
+ *
+ * @constructor
+ * @extends DrawioFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - File data (XML content).
+ * @param {Object} meta - Trello attachment metadata.
  */
 TrelloFile = function(ui, data, meta)
 {

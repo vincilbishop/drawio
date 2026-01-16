@@ -1,5 +1,43 @@
 /**
- * Copyright (c) 2006-2012, JGraph Holdings Ltd
+ * @file Format.js - Format/Style Panel
+ * @description Format provides the right-side panel for editing cell styles.
+ *
+ * This file provides:
+ * - Style editing for selected cells (fill, stroke, font, etc.)
+ * - Diagram-level settings (page size, background, grid)
+ * - Arrange options (alignment, distribution, size)
+ * - Text formatting (font, size, alignment, spacing)
+ * - Connection point editing
+ * - Edge routing options
+ * - Effect options (shadow, rounded, sketch)
+ *
+ * The Format panel dynamically updates based on:
+ * - Current selection (vertex, edge, or mixed)
+ * - Number of selected cells (single vs. multiple)
+ * - Cell type (shape-specific options)
+ *
+ * Format works with the Graph to apply style changes via setCellStyles().
+ *
+ * @copyright 2006-2012, JGraph Holdings Ltd
+ * @see Graph.js for style application methods
+ * @see EditorUi.js for the UI that contains this panel
+ * @see mxConstants for style property keys
+ */
+
+/**
+ * Constructs a new Format panel for the given EditorUi.
+ *
+ * The Format panel displays style editing options in the right sidebar.
+ * It dynamically shows relevant options based on the current selection.
+ *
+ * @constructor
+ * @param {EditorUi} editorUi - The EditorUi instance this format panel belongs to.
+ * @param {HTMLElement} container - DOM element to render the format panel into.
+ *
+ * @example
+ * // The format panel updates automatically on selection change
+ * // Style changes are applied via the graph:
+ * graph.setCellStyles(mxConstants.STYLE_FILLCOLOR, '#ff0000', cells);
  */
 Format = function(editorUi, container)
 {

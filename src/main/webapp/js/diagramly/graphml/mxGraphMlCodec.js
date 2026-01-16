@@ -1,6 +1,37 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
+ * @file mxGraphMlCodec.js - GraphML Format Import
+ * @description Parses GraphML XML files and converts to draw.io diagrams.
+ *
+ * This class provides:
+ * - Standard GraphML structure parsing
+ * - yEd extension support (y:* namespace)
+ * - Node and edge attribute mapping
+ * - Graph hierarchy preservation
+ * - Multi-graph document support
+ * - Reference resolution (y:GraphMLReference)
+ *
+ * GraphML is a comprehensive XML-based format for graphs used by:
+ * - yEd (yWorks)
+ * - Gephi
+ * - NetworkX
+ * - Various graph analysis tools
+ *
+ * The codec handles yEd-specific extensions including:
+ * - Shape definitions (y:ShapeNode)
+ * - Edge routing (y:PolyLineEdge)
+ * - Group nodes (y:GroupNode)
+ * - Style definitions
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @see EditorUi.js for import orchestration
+ */
+
+/**
+ * Constructs a new mxGraphMlCodec for GraphML import.
+ *
+ * Initializes reference caching for GraphML reference resolution.
+ *
+ * @constructor
  */
 function mxGraphMlCodec()
 {

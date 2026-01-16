@@ -1,6 +1,36 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file DropboxFile.js - Dropbox File Handler
+ * @description Handles diagram files stored in Dropbox.
+ *
+ * This class provides:
+ * - Save/load diagrams from Dropbox
+ * - Version tracking via content hash
+ * - Autosave support
+ * - File path-based identification
+ *
+ * DropboxFile uses the stat object from Dropbox API which contains:
+ * - path_display: Full path to file
+ * - name: File name
+ * - content_hash: Version identifier
+ * - server_modified: Last modification time
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends DrawioFile
+ * @see DropboxClient.js for API operations
+ * @see DropboxLibrary.js for shape library variant
+ */
+
+/**
+ * Constructs a new DropboxFile for Dropbox storage.
+ *
+ * DropboxFile wraps a Dropbox file stat object which contains
+ * metadata like path, name, and content hash for version tracking.
+ *
+ * @constructor
+ * @extends DrawioFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - File data (XML content).
+ * @param {Object} stat - Dropbox file metadata from API.
  */
 DropboxFile = function(ui, data, stat)
 {

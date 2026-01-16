@@ -1,12 +1,38 @@
-// $Id = LocalFile.js,v 1.12 2010-01-02 09 =45 =14 gaudenz Exp $
-// Copyright (c) 2006-2014, JGraph Holdings Ltd
 /**
- * Constructs a new point for the optional x and y coordinates. If no
- * coordinates are given, then the default values for <x> and <y> are used.
+ * @file LocalFile.js - Browser Local File Storage
+ * @description LocalFile handles files stored in browser localStorage or via File System Access API.
+ *
+ * This class provides:
+ * - Save/load files to browser storage
+ * - File System Access API integration (modern browsers)
+ * - Autosave support when file handle is available
+ * - Temporary file support (not persisted)
+ *
+ * LocalFile is used when:
+ * - User saves to "Device" storage
+ * - User opens a local file via drag-drop or file picker
+ * - File is a temporary/unsaved diagram
+ *
+ * @copyright 2006-2014, JGraph Holdings Ltd
+ * @see DrawioFile.js for base class
+ * @see StorageFile.js for IndexedDB storage
+ */
+
+/**
+ * Constructs a new LocalFile for browser-local storage.
+ *
+ * LocalFile stores diagrams in browser localStorage or uses the File System
+ * Access API for direct file access when available.
+ *
  * @constructor
- * @class Implements a basic 2D point. Known subclassers = {@link mxRectangle}.
- * @param {number} x X-coordinate of the point.
- * @param {number} y Y-coordinate of the point.
+ * @extends DrawioFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - Initial file data (XML content).
+ * @param {string} title - File title/name.
+ * @param {boolean} [temp=false] - If true, file is temporary (not persisted).
+ * @param {FileSystemFileHandle} [fileHandle] - File System Access API handle.
+ * @param {Object} [desc] - File descriptor/metadata.
+ * @param {boolean} [editable=true] - Whether file is editable.
  */
 LocalFile = function(ui, data, title, temp, fileHandle, desc, editable)
 {

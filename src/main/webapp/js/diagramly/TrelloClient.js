@@ -1,6 +1,36 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file TrelloClient.js - Trello Card Integration
+ * @description Provides Trello storage integration for diagrams.
+ *
+ * This class provides:
+ * - OAuth authentication with Trello
+ * - Board and card browsing
+ * - Save/load diagrams as card attachments
+ * - File size limits handling (10MB max)
+ *
+ * TrelloClient handles:
+ * - Card attachment management
+ * - Board/list/card navigation
+ * - Session token persistence
+ * - Popup authentication flow
+ *
+ * Note: Trello stores diagrams as attachments on cards,
+ * using a compound ID format (cardId|$|attachmentId).
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends DrawioClient
+ * @see TrelloFile.js for file operations
+ * @see TrelloLibrary.js for shape library support
+ */
+
+/**
+ * Constructs a new TrelloClient for Trello integration.
+ *
+ * Initializes the Trello SDK with the application key.
+ *
+ * @constructor
+ * @extends DrawioClient
+ * @param {EditorUi} editorUi - The EditorUi instance.
  */
 TrelloClient = function(editorUi)
 {

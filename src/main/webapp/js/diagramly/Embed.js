@@ -1,6 +1,40 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
+ * @file Embed.js - Embedded Graph Creation Module
+ * @description Provides lightweight graph creation for embedding diagrams without the full editor.
+ *
+ * This module provides:
+ * - Minimal graph instance creation
+ * - MathJax integration for equations
+ * - Tooltip styling
+ * - Stencil loading (if provided)
+ * - Stylesheet application
+ *
+ * Purpose:
+ * Creates standalone graph instances for embedding diagrams in web pages
+ * without loading the full draw.io editor infrastructure.
+ *
+ * IIFE Parameters:
+ * - stylesheet: Optional CSS stylesheet for graph styling
+ * - stencils: Optional stencil definitions to load
+ *
+ * Callbacks:
+ * - mxClientOnLoad: Called after script loads with stylesheet and graph factory
+ * - mxClientOnCreate: Called when a graph instance is created
+ *
+ * Features:
+ * - Minimal footprint (no dynamic stencil loading)
+ * - MathJax support for mathematical notation
+ * - Tooltip styling via injected CSS
+ * - Works with compressed diagram data
+ *
+ * Usage:
+ * Include this script after mxClient.js and call mxClientOnLoad
+ * callback to get the graph factory function.
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
+ * @see GraphViewer.js for viewer functionality
+ * @see viewer.min.js for complete viewer bundle
  */
 (function(stylesheet, stencils)
 {

@@ -1,25 +1,52 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
- */
-/**
- * URL Parameters and protocol description are here:
+ * @file bootstrap.js - Application Bootstrap and Initialization
+ * @description Entry point for draw.io that handles URL parameters, script loading, and app startup.
  *
- * https://www.drawio.com/doc/faq/supported-url-parameters
+ * This file provides:
+ * - URL parameter parsing
+ * - Script loading utilities (mxscript, mxinclude)
+ * - Meta tag management (mxmeta)
+ * - Environment detection (Electron, localStorage)
+ * - Development mode configuration
+ * - Application startup orchestration
  *
- * Parameters for developers:
+ * Bootstrap Sequence:
+ * 1. Parse URL parameters
+ * 2. Handle URL redirects (domain normalization)
+ * 3. Set up meta tags (CSP, app name)
+ * 4. Load scripts in correct order
+ * 5. Wait for window load + scripts loaded
+ * 6. Call App.main() to start application
  *
- * - dev=1: For developers only
- * - test=1: For developers only
- * - export=URL for export: For developers only
- * - ignoremime=1: For developers only (see DriveClient.js). Use Cmd-S to override mime.
- * - createindex=1: For developers only (see etc/build/README)
- * - filesupport=0: For developers only (see Editor.js in core)
- * - savesidebar=1: For developers only (see Sidebar.js)
- * - pages=1: For developers only (see Pages.js)
- * - lic=email: For developers only (see LicenseServlet.java)
- * --
- * - networkshapes=1: For testing network shapes (temporary)
+ * Key Global Functions:
+ * - mxscript(src, onLoad): Synchronously add script tags
+ * - mxinclude(src): Asynchronously add script tags
+ * - mxmeta(name, content): Add meta tags
+ *
+ * Key Global Variables:
+ * - urlParams: Parsed URL parameters object
+ * - mxIsElectron: True if running in Electron
+ * - isLocalStorage: True if localStorage available
+ *
+ * URL Parameters Documentation:
+ * @see https://www.drawio.com/doc/faq/supported-url-parameters
+ *
+ * Developer Parameters:
+ * - dev=1: Development mode (loads source files)
+ * - test=1: Test mode
+ * - export=URL: Custom export server
+ * - ignoremime=1: Ignore MIME types (DriveClient)
+ * - createindex=1: Create search index
+ * - filesupport=0: Disable file support
+ * - savesidebar=1: Save sidebar state
+ * - pages=1: Enable pages
+ * - networkshapes=1: Test network shapes
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
+ * @see main.js for final startup trigger
+ * @see PreConfig.js for pre-initialization globals
+ * @see PostConfig.js for post-initialization globals
  */
 // Parses URL parameters
 var urlParams = (function()

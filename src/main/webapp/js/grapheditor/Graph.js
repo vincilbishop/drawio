@@ -1,7 +1,32 @@
 /**
- * Copyright (c) 2006-2012, JGraph Holdings Ltd
+ * @file Graph.js - Extended mxGraph Class
+ * @description The Graph class extends mxGraph with draw.io-specific functionality.
+ *
+ * This is the largest and most important file in grapheditor. It provides:
+ * - Custom cell editing and label handling
+ * - Enhanced selection and connection behavior
+ * - HTML sanitization for security (DOMPurify integration)
+ * - Link and tooltip handling
+ * - Custom shape rendering support
+ * - Theme management
+ * - Connection port (constraint) management
+ * - Placeholder/template variable support
+ * - SVG/image export utilities
+ *
+ * The class hierarchy is:
+ *   mxGraph (mxgraph/src/view/mxGraph.js)
+ *     -> Graph (this file)
+ *       -> Extended in js/diagramly/ via prototype modifications
+ *
+ * @copyright 2006-2012, JGraph Holdings Ltd
+ * @see mxGraph in mxgraph/src/view/ for base class
+ * @see Editor.js for the Editor that manages this Graph
+ * @see EditorUi.js for the UI that displays this Graph
  */
-// Workaround for handling named HTML entities in mxUtils.parseXml
+
+// Why: Workaround for handling named HTML entities in mxUtils.parseXml
+// The browser's DOMParser doesn't recognize named HTML entities like &nbsp;
+// in XML context. We convert them to numeric entities before parsing.
 // LATER: How to configure DOMParser to just ignore all entities?
 (function()
 {
@@ -313,13 +338,29 @@ mxImageShape.prototype.getImageDataUri = function()
 })();
 
 /**
- * Constructs a new graph instance. Note that the constructor does not take a
- * container because the graph instance is needed for creating the UI, which
- * in turn will create the container for the graph. Hence, the container is
- * assigned later in EditorUi.
- */
-/**
- * Defines graph class.
+ * Constructs a new Graph instance extending mxGraph with draw.io features.
+ *
+ * Note: The container may be null during construction because the graph instance
+ * is needed for creating the UI (EditorUi), which in turn creates the container.
+ * The container is assigned later via setContainer().
+ *
+ * @constructor
+ * @extends mxGraph
+ * @param {HTMLElement} [container] - DOM element to render the graph into.
+ *   Often null initially; set later by EditorUi.
+ * @param {mxGraphModel} [model] - The data model. If null, a new model is created.
+ * @param {string} [renderHint] - Rendering hint ('exact', 'faster', 'fastest').
+ * @param {mxStylesheet} [stylesheet] - Style definitions. If null, defaults are used.
+ * @param {Object} [themes] - Theme configuration for styling (dark mode, etc.).
+ * @param {boolean} [standalone=false] - If true, graph operates independently
+ *   without the full draw.io application context.
+ *
+ * @example
+ * // Create a graph with default settings
+ * var graph = new Graph(document.getElementById('graphContainer'));
+ *
+ * // Create a graph for standalone embedding
+ * var graph = new Graph(container, null, null, null, null, true);
  */
 Graph = function(container, model, renderHint, stylesheet, themes, standalone)
 {

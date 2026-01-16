@@ -1,9 +1,37 @@
 /**
- * Copyright (c) 2006-2015, JGraph Holdings Ltd
+ * @file Shapes.js - Custom Shape Definitions
+ * @description Shapes defines and registers all custom shapes used by draw.io.
+ *
+ * This file provides:
+ * - Custom vertex shapes (tables, callouts, process shapes, etc.)
+ * - Custom edge shapes and markers (arrows, connectors)
+ * - Shape registration with mxCellRenderer
+ * - Shape style handlers
+ * - Table cell rendering
+ * - Image loading and caching
+ * - Stencil shape support
+ *
+ * Shapes extend mxShape and are registered with:
+ *   mxCellRenderer.registerShape('shapeName', ShapeClass);
+ *
+ * Shape style is set via the 'shape' style property:
+ *   style="shape=myShape;..."
+ *
+ * This file is loaded after mxGraph shapes and before the application.
+ * Additional shapes may be added via stencil XML files.
+ *
+ * @copyright 2006-2015, JGraph Holdings Ltd
+ * @see mxgraph/src/shape/ for base mxGraph shapes
+ * @see Graph.js for shape-related graph methods
+ * @see Sidebar.js for shape palette display
  */
 
 /**
- * Registers shapes.
+ * Self-executing function that registers all custom shapes.
+ *
+ * Why: Uses IIFE to avoid polluting global namespace while registering
+ * shapes with mxCellRenderer. Helper classes defined inside are only
+ * accessible through the cell renderer's shape registry.
  */
 (function()
 {

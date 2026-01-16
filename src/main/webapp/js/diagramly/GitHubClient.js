@@ -1,13 +1,43 @@
 /**
- * Copyright (c) 2006-2024, JGraph Holdings Ltd
- * Copyright (c) 2006-2024, draw.io AG
+ * @file GitHubClient.js - GitHub Repository Integration
+ * @description Provides GitHub storage integration for diagrams.
+ *
+ * This class provides:
+ * - OAuth 2.0 authentication with GitHub
+ * - Repository and branch browsing
+ * - Save/load diagrams to GitHub repositories
+ * - Commit message support
+ * - File size limits handling (50MB max)
+ *
+ * GitHubClient handles:
+ * - Personal and organization repositories
+ * - Branch selection and file path navigation
+ * - Token-based authentication
+ * - API rate limiting
+ *
+ * @copyright 2006-2024, JGraph Holdings Ltd
+ * @extends DrawioClient
+ * @see GitHubFile.js for file operations
+ * @see GitHubLibrary.js for shape library support
  */
+
 //Add a closure to hide the class private variables without changing the code a lot
 (function ()
 {
 
 var _token = null;
 
+/**
+ * Constructs a new GitHubClient for GitHub integration.
+ *
+ * Initializes GitHub API client with the application client ID
+ * and configures API endpoints.
+ *
+ * @constructor
+ * @extends DrawioClient
+ * @param {EditorUi} editorUi - The EditorUi instance.
+ * @param {string} [authName='ghauth'] - Cookie name for auth token storage.
+ */
 window.GitHubClient = function(editorUi, authName)
 {
 	DrawioClient.call(this, editorUi, authName || 'ghauth');

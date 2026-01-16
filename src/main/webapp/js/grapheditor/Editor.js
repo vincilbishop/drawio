@@ -1,8 +1,48 @@
 /**
- * Copyright (c) 2006-2012, JGraph Holdings Ltd
+ * @file Editor.js - Core Editor Class
+ * @description The Editor class is the central controller for the draw.io graph editor.
+ *
+ * This class manages:
+ * - The Graph instance (extends mxGraph)
+ * - Undo/redo functionality via mxUndoManager
+ * - File state (filename, modified flag)
+ * - Status bar messages
+ * - Autosave coordination
+ * - Stencil registry initialization
+ *
+ * The Editor extends mxEventSource to fire events:
+ * - 'statusChanged' - When status message changes
+ * - 'autosaveChanged' - When autosave setting changes
+ * - 'resetGraphView' - When graph view is reset
+ *
+ * This class is extended by js/diagramly/Editor.js for full draw.io functionality.
+ *
+ * @copyright 2006-2012, JGraph Holdings Ltd
+ * @see Graph.js for the Graph class this editor manages
+ * @see EditorUi.js for the UI layer that uses this editor
  */
+
 /**
- * Editor constructor executed on page load.
+ * Constructs a new Editor instance.
+ *
+ * The Editor is the core controller managing the graph, undo history, and file state.
+ * It can operate in "chromeless" mode for embedded viewing without editing UI.
+ *
+ * @constructor
+ * @extends mxEventSource
+ * @param {boolean} [chromeless=false] - If true, creates a viewer without editing UI.
+ *   Used for embedding diagrams in read-only contexts.
+ * @param {Object} [themes] - Theme configuration object for graph styling.
+ * @param {mxGraphModel} [model] - Graph model to use. If null, a new model is created.
+ * @param {Graph} [graph] - Graph instance to use. If null, createGraph() is called.
+ * @param {boolean} [editable=!chromeless] - Whether the graph should be editable.
+ *
+ * @example
+ * // Create a standard editor
+ * var editor = new Editor();
+ *
+ * // Create a read-only viewer
+ * var viewer = new Editor(true);
  */
 Editor = function(chromeless, themes, model, graph, editable)
 {

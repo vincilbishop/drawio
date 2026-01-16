@@ -1,6 +1,25 @@
 /**
- * Copyright (c) 2006-2024, JGraph Holdings Ltd
- * Copyright (c) 2006-2024, draw.io AG
+ * @file DriveClient.js - Google Drive Integration
+ * @description Provides Google Drive storage integration for diagrams.
+ *
+ * This class provides:
+ * - OAuth 2.0 authentication with Google
+ * - File picker integration for Drive browsing
+ * - Save/load diagrams to Google Drive
+ * - Real-time collaboration support
+ * - File sharing and permissions
+ * - Thumbnail generation for Drive preview
+ *
+ * DriveClient handles:
+ * - Multiple Google accounts
+ * - Drive app installation
+ * - MIME type registration for .drawio files
+ * - External authentication (for embedded contexts)
+ *
+ * @copyright 2006-2024, JGraph Holdings Ltd
+ * @extends DrawioClient
+ * @see DriveFile.js for file operations
+ * @see DriveLibrary.js for shape library support
  */
 
 //Add a closure to hide the class private variables without changing the code a lot
@@ -10,6 +29,17 @@
 var _token = null;
 var pickers = {};
 
+/**
+ * Constructs a new DriveClient for Google Drive integration.
+ *
+ * Initializes Google API client, sets up MIME types, and configures
+ * OAuth scopes for Drive file access and user profile.
+ *
+ * @constructor
+ * @extends DrawioClient
+ * @param {EditorUi} editorUi - The EditorUi instance.
+ * @param {boolean} [isExtAuth] - If true, uses external authentication flow.
+ */
 window.DriveClient = function(editorUi, isExtAuth)
 {
 	if (isExtAuth == null && window.urlParams != null && window.urlParams['extAuth'] == '1')

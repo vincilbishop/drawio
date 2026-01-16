@@ -1,6 +1,40 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file DrawioClient.js - Cloud Service Client Base Class
+ * @description Base class for all cloud storage service integrations.
+ *
+ * This class provides:
+ * - OAuth token management (storage, retrieval, clearing)
+ * - User session management
+ * - Persistent token storage (localStorage/sessionStorage/cookies)
+ * - Event-based user change notifications
+ *
+ * DrawioClient is the abstract base for:
+ * - DriveClient (Google Drive)
+ * - DropboxClient (Dropbox)
+ * - OneDriveClient (Microsoft OneDrive/SharePoint)
+ * - GitHubClient (GitHub repositories)
+ * - GitLabClient (GitLab repositories)
+ * - TrelloClient (Trello cards)
+ *
+ * Each cloud service client extends this class and implements
+ * service-specific authentication and API methods.
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends mxEventSource
+ * @see DriveClient.js, DropboxClient.js, OneDriveClient.js
+ * @see GitHubClient.js, GitLabClient.js, TrelloClient.js
+ */
+
+/**
+ * Constructs a new DrawioClient base instance.
+ *
+ * Initializes token storage and retrieves any persisted authentication token.
+ * Subclasses call this constructor with their specific cookie name.
+ *
+ * @constructor
+ * @extends mxEventSource
+ * @param {EditorUi} editorUi - The EditorUi instance.
+ * @param {string} cookieName - Name for token storage (e.g., 'gDriveAuthInfo').
  */
 DrawioClient = function(editorUi, cookieName)
 {

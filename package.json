@@ -1,0 +1,20 @@
+{
+  "name": "drawio",
+  "version": "29.3.0",
+  "description": "draw.io diagramming application",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^2.1.0",
+    "acorn": "^8.15.0",
+    "js-beautify": "^1.15.4",
+    "jsdom": "^24.0.0",
+    "prettier": "^3.7.4",
+    "source-map": "^0.7.6",
+    "vitest": "^2.1.0"
+  }
+}

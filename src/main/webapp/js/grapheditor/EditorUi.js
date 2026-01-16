@@ -1,8 +1,52 @@
 /**
- * Copyright (c) 2006-2012, JGraph Holdings Ltd
+ * @file EditorUi.js - User Interface Controller
+ * @description EditorUi orchestrates the entire draw.io user interface.
+ *
+ * This class manages:
+ * - Toolbar creation and button state
+ * - Menu bar and context menus
+ * - Sidebar/shape palette
+ * - Format panel (right panel for styling)
+ * - Dialog management
+ * - File operations (save, open, export, print)
+ * - Keyboard shortcuts
+ * - Clipboard operations
+ * - Zoom and pan controls
+ * - Selection state tracking
+ *
+ * EditorUi is the main UI controller that coordinates between:
+ * - Editor (the core controller)
+ * - Graph (the visual component)
+ * - Actions (command handlers)
+ * - Menus, Toolbar, Sidebar, Format panel
+ *
+ * This class is extended by js/diagramly/EditorUi.js for full draw.io functionality.
+ *
+ * @copyright 2006-2012, JGraph Holdings Ltd
+ * @see Editor.js for the core editor this UI controls
+ * @see Actions.js for command implementations
+ * @see Menus.js for menu definitions
  */
+
 /**
- * Constructs a new graph editor
+ * Constructs a new EditorUi instance.
+ *
+ * EditorUi is the main UI controller that creates and manages all visual
+ * components of the editor including toolbar, sidebar, format panel, and menus.
+ *
+ * @constructor
+ * @extends mxEventSource
+ * @param {Editor} [editor] - The Editor instance to control. If null, a new Editor is created.
+ * @param {HTMLElement} [container=document.body] - DOM element to render the UI into.
+ * @param {boolean} [lightbox] - If true, creates a minimal lightbox viewer UI.
+ *
+ * @example
+ * // Create EditorUi with default editor
+ * var editorUi = new EditorUi();
+ *
+ * // Create EditorUi with custom editor
+ * var editor = new Editor();
+ * var editorUi = new EditorUi(editor, document.getElementById('container'));
  */
 EditorUi = function(editor, container, lightbox)
 {

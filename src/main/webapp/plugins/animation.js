@@ -1,9 +1,30 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
- */
-/**
- * Explore plugin.
+ * @file animation.js - Diagram Animation Plugin
+ * @description Creates step-by-step reveal animations for presentations.
+ *
+ * This plugin provides:
+ * - Timeline editor for animation sequences
+ * - Show/hide/fade effects for cells
+ * - Flow animation on edges
+ * - Wait commands for timing
+ * - Auto-play in chromeless (viewer) mode
+ *
+ * Animation Script Language:
+ * - "show <cellId>" - Reveal cell with wipe animation
+ * - "show <cellId> fade" - Reveal cell with fade-in
+ * - "hide <cellId>" - Hide cell with fade-out
+ * - "flow <cellId> start|stop" - Toggle edge flow animation
+ * - "wait <ms>" - Pause for specified milliseconds
+ *
+ * Usage:
+ * - Enable via Extras > Animation menu
+ * - Select cells and click buttons to add to timeline
+ * - Animation stored in diagram root cell's 'animation' attribute
+ * - Auto-plays when viewing diagram in chromeless mode
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
+ * @see flow.js for standalone flow animation
  */
 Draw.loadPlugin(function(editorUi)
 {

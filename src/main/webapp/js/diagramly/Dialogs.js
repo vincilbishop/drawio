@@ -1,8 +1,54 @@
 /**
- * Copyright (c) 2006-2020, JGraph Holdings Ltd
- * Copyright (c) 2006-2020, draw.io AG
+ * @file Dialogs.js - Extended Dialog Components
+ * @description Extended modal dialogs for the full draw.io application.
+ *
+ * This file (362KB) provides many additional dialogs beyond grapheditor/Dialogs.js:
+ *
+ * **Storage & Files:**
+ * - StorageDialog - Cloud storage provider selection
+ * - StorageFile dialogs - File picker for each provider
+ * - SplashDialog - Initial welcome/recent files screen
+ * - NewDialog - New diagram from template
+ * - OpenDialog extensions - Extended file open options
+ *
+ * **Export & Share:**
+ * - ExportDialog - Extended export options (PDF, PNG, SVG, etc.)
+ * - EmbedDialog - Generate embed code for websites
+ * - PublishDialog - Publish to web
+ * - LinkDialog extensions - Enhanced hyperlink editing
+ *
+ * **Edit & Format:**
+ * - EditDataDialog - Cell/diagram metadata editing
+ * - EditShapeDialog - Custom shape XML editing
+ * - EditStyleDialog - Direct style string editing
+ * - FindWindow - Find and replace
+ * - TagsWindow - Shape tag management
+ *
+ * **Configuration:**
+ * - PluginsDialog - Plugin management
+ * - TemplateDialog - Template browser
+ * - MoreShapesDialog - Shape library management
+ * - ConfirmDialog - Confirmation prompts
+ * - ErrorDialog - Error display
+ *
+ * @copyright 2006-2020, JGraph Holdings Ltd
+ * @copyright 2006-2020, draw.io AG
+ * @see ../grapheditor/Dialogs.js for base dialog classes
+ * @see EditorUi.js for dialog display methods
  */
 
+/**
+ * Constructs a StorageDialog for cloud provider selection.
+ *
+ * StorageDialog displays icons for available cloud storage providers
+ * (Google Drive, Dropbox, OneDrive, GitHub, etc.) and allows the user
+ * to select where to save/open files.
+ *
+ * @constructor
+ * @param {EditorUi} editorUi - The EditorUi instance.
+ * @param {Function} fn - Callback function when provider is selected.
+ * @param {number} [rowLimit=2] - Maximum buttons per row.
+ */
 var StorageDialog = function(editorUi, fn, rowLimit)
 {
 	rowLimit = (rowLimit != null) ? rowLimit : 2;

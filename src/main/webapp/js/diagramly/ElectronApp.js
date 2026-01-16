@@ -1,6 +1,45 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
+ * @file ElectronApp.js - Electron Desktop Application Initialization
+ * @description Configures draw.io for running as an Electron desktop application.
+ *
+ * This file provides:
+ * - Desktop-specific mode configuration
+ * - Electron IPC communication
+ * - File system integration
+ * - Native menu customization
+ * - Security policy configuration
+ * - Plugin loading from local filesystem
+ *
+ * Key Configurations:
+ * - App.mode set to App.MODE_DEVICE
+ * - External data communication disabled
+ * - Preview/embed options limited for security
+ * - Content Security Policy enforced
+ * - Native printing via Electron
+ *
+ * Desktop Features:
+ * - Recent files tracking
+ * - File association handling
+ * - Native dialogs (save, open)
+ * - Draft auto-save
+ * - Synchronization (merge/overwrite)
+ *
+ * IPC Actions:
+ * - requestSync() for synchronous Electron requests
+ * - getPluginFile for loading external plugins
+ * - openExternal for opening URLs in browser
+ * - Various file operations
+ *
+ * Security:
+ * - Strict CSP (Content Security Policy)
+ * - No eval in stencil registry
+ * - Path traversal prevention for plugins
+ * - Web plugin loading disabled
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
+ * @see App.js for base application
+ * @see LocalFile.js for local file handling
  */
 window.PLUGINS_BASE_PATH = '.';
 window.TEMPLATE_PATH = 'templates';

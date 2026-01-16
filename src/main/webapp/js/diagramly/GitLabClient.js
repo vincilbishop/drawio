@@ -1,13 +1,42 @@
 /**
- * Copyright (c) 2006-2024, JGraph Holdings Ltd
- * Copyright (c) 2006-2024, draw.io AG
+ * @file GitLabClient.js - GitLab Repository Integration
+ * @description Provides GitLab storage integration for diagrams.
+ *
+ * This class provides:
+ * - OAuth 2.0 authentication with GitLab
+ * - Project and branch browsing
+ * - Save/load diagrams to GitLab repositories
+ * - Commit message support
+ * - File size limits handling (10MB max)
+ *
+ * GitLabClient extends GitHubClient with GitLab-specific:
+ * - OAuth scope configuration
+ * - API v4 endpoint formatting
+ * - Bearer token authentication
+ * - Project member access link format
+ *
+ * @copyright 2006-2024, JGraph Holdings Ltd
+ * @extends GitHubClient
+ * @see GitLabFile.js for file operations
+ * @see GitLabLibrary.js for shape library support
  */
+
 //Add a closure to hide the class private variables without changing the code a lot
 (function()
 {
 
 var _token = null;
 
+/**
+ * Constructs a new GitLabClient for GitLab integration.
+ *
+ * Extends GitHubClient and configures GitLab-specific API endpoints
+ * and authentication settings.
+ *
+ * @constructor
+ * @extends GitHubClient
+ * @param {EditorUi} editorUi - The EditorUi instance.
+ */
 window.GitLabClient = function(editorUi)
 {
 	GitHubClient.call(this, editorUi, 'gitlabauth');

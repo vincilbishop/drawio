@@ -1,10 +1,57 @@
 /**
- * Copyright (c) 2006-2020, JGraph Holdings Ltd
- * Copyright (c) 2006-2020, draw.io AG
+ * @file Menus.js - Extended Menu System
+ * @description Extends the base Menus with draw.io-specific menu items.
+ *
+ * This file (160KB) adds many menu items beyond grapheditor/Menus.js:
+ *
+ * **File Menu Extensions:**
+ * - Cloud storage operations (Drive, Dropbox, OneDrive, etc.)
+ * - Import from various formats (Visio, Lucidchart, Gliffy, etc.)
+ * - Export to various formats (PDF, PNG, SVG, VSDX, etc.)
+ * - Share and publish options
+ * - Page setup and print
+ *
+ * **Edit Menu Extensions:**
+ * - Find and replace
+ * - Edit data/metadata
+ * - Edit style directly
+ * - Edit connection points
+ *
+ * **View Menu Extensions:**
+ * - Page view/outline
+ * - Layers panel
+ * - Tags panel
+ * - Format panel toggle
+ *
+ * **Arrange Menu Extensions:**
+ * - Advanced layout options
+ * - Insert from template
+ * - Insert special items (freehand, from URL, etc.)
+ *
+ * **Extras Menu:**
+ * - Plugins management
+ * - Custom libraries
+ * - Configuration
+ * - Theme selection
+ *
+ * This file extends Menus via prototype modification.
+ *
+ * @copyright 2006-2020, JGraph Holdings Ltd
+ * @copyright 2006-2020, draw.io AG
+ * @see ../grapheditor/Menus.js for base menu class
+ * @see Actions.js for action implementations
+ */
+
+/**
+ * IIFE that extends Menus with draw.io-specific items.
+ *
+ * Why: Uses IIFE to modify Menus.prototype and mxPopupMenu.prototype
+ * without polluting global namespace.
  */
 (function()
 {
-	// Adds scrollbars for menus that exceed the page height
+	// Why: Adds scrollbars for menus that exceed viewport height.
+	// Long menus (like font lists) would otherwise be cut off.
 	var mxPopupMenuShowMenu = mxPopupMenu.prototype.showMenu;
 	mxPopupMenu.prototype.showMenu = function()
 	{

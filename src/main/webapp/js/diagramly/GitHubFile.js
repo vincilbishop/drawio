@@ -1,6 +1,37 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file GitHubFile.js - GitHub Repository File Handler
+ * @description Handles diagram files stored in GitHub repositories.
+ *
+ * This class provides:
+ * - Save/load diagrams from GitHub repositories
+ * - Version tracking via commit SHA
+ * - Commit message prompts on save
+ * - Repository access settings link
+ *
+ * GitHubFile metadata (meta) contains:
+ * - org: Organization or username
+ * - repo: Repository name
+ * - ref: Branch or commit reference
+ * - path: File path within repository
+ * - sha: Blob SHA for version tracking
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends DrawioFile
+ * @see GitHubClient.js for API operations
+ * @see GitHubLibrary.js for shape library variant
+ */
+
+/**
+ * Constructs a new GitHubFile for GitHub repository storage.
+ *
+ * GitHubFile wraps GitHub repository metadata for file identification
+ * and version tracking via blob SHA.
+ *
+ * @constructor
+ * @extends DrawioFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - File data (XML content).
+ * @param {Object} meta - GitHub file metadata (org, repo, ref, path, sha).
  */
 GitHubFile = function(ui, data, meta)
 {

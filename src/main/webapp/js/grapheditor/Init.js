@@ -1,9 +1,26 @@
 /**
- * Copyright (c) 2006-2021, JGraph Holdings Ltd
- * Copyright (c) 2006-2021, draw.io AG
+ * @file Init.js - Graph Editor Initialization
+ * @description Entry point and global configuration for the draw.io graph editor.
+ *
+ * This file sets up global configuration variables that control the editor's
+ * behavior, including:
+ * - URL endpoints for save/export operations
+ * - Resource paths for stencils, images, and styles
+ * - Security configuration for HTML sanitization (DOMPurify)
+ * - mxGraph base paths and language settings
+ *
+ * These variables can be overridden before loading this file to customize
+ * the editor for different deployment environments.
+ *
+ * @copyright 2006-2021, JGraph Holdings Ltd
+ * @copyright 2006-2021, draw.io AG
+ * @see README.md for grapheditor module overview
+ * @see ../diagramly/Init.js for application-level initialization
  */
 
- // urlParams is null when used for embedding
+// Why: urlParams may be null when the editor is embedded in another application
+// (e.g., Confluence, VS Code extension). We need a fallback empty object to
+// prevent errors when checking URL parameters.
 window.urlParams = window.urlParams || {};
 
 // Public global variables

@@ -1,5 +1,33 @@
 /**
- * Export mxFile as Vsdx file
+ * @file VsdxExport.js - Microsoft Visio VSDX Export
+ * @description Exports draw.io diagrams to Microsoft Visio VSDX format.
+ *
+ * This class provides:
+ * - Full VSDX archive generation using JSZip
+ * - OOXML document structure creation
+ * - Shape-to-Visio conversion
+ * - Multi-page document support
+ * - Embedded image handling
+ * - Style mapping to Visio ShapeSheet format
+ *
+ * VsdxExport creates valid VSDX files compatible with:
+ * - Microsoft Visio 2013 and later
+ * - Visio Online
+ * - Third-party Visio-compatible applications
+ *
+ * @copyright JGraph Holdings Ltd
+ * @see vsdx/importer.js for VSDX import
+ * @see EditorUi.js for export orchestration
+ */
+
+/**
+ * Constructs a VsdxExport instance for Visio export.
+ *
+ * Creates the export context with required VSDX canvas and
+ * prepares shape ID mapping for the export process.
+ *
+ * @constructor
+ * @param {EditorUi} editorUi - The EditorUi instance with diagram to export.
  */
 function VsdxExport(editorUi)
 {

@@ -1,9 +1,37 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file DiffSync.js - Differential Synchronization for Collaborative Editing
+ * @description Provides diff-based file synchronization and merging.
+ *
+ * This file extends EditorUi with:
+ * - Diff generation between diagram versions
+ * - Patch application to merge changes
+ * - Conflict detection and resolution
+ * - Page-level and cell-level diffing
+ *
+ * Differential synchronization enables:
+ * - Concurrent editing by multiple users
+ * - Automatic merge of non-conflicting changes
+ * - Conflict markers for manual resolution
+ * - Efficient transfer of only changed data
+ *
+ * Diff operation types:
+ * - DIFF_INSERT ('i'): New elements added
+ * - DIFF_REMOVE ('r'): Elements deleted
+ * - DIFF_UPDATE ('u'): Elements modified
+ *
+ * The diff system tracks:
+ * - Cell properties (geometry, style, value)
+ * - Graph view state (background, scale, etc.)
+ * - Page structure (add/remove/reorder)
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @see DrawioFileSync.js for file synchronization
+ * @see P2PCollab.js for real-time collaboration
  */
+
 /**
- * Removes all labels, user objects and styles from the given node in-place.
+ * Constant for insert operations in diffs.
+ * @type {string}
  */
 EditorUi.DIFF_INSERT = 'i';
 

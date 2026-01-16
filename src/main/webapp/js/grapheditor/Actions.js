@@ -1,8 +1,51 @@
 /**
- * Copyright (c) 2006-2020, JGraph Holdings Ltd
- * Copyright (c) 2006-2020, draw.io AG
+ * @file Actions.js - Command Pattern Implementation
+ * @description Actions implements the command pattern for all user-triggered operations.
  *
- * Constructs the actions object for the given UI.
+ * This file provides:
+ * - A registry of named actions (commands)
+ * - File operations (new, open, save, export, print)
+ * - Edit operations (undo, redo, cut, copy, paste, delete)
+ * - View operations (zoom, fit, reset view)
+ * - Format operations (style, arrange, align)
+ * - Selection operations (select all, select none)
+ * - Layer operations (to front, to back)
+ * - Insert operations (link, image)
+ *
+ * Actions can be triggered from:
+ * - Menu items (Menus.js)
+ * - Toolbar buttons (Toolbar.js)
+ * - Keyboard shortcuts (via mxKeyHandler)
+ * - Programmatically via editorUi.actions.get('actionName').funct()
+ *
+ * This class is extended by js/diagramly/Actions.js for additional actions.
+ *
+ * @copyright 2006-2020, JGraph Holdings Ltd
+ * @copyright 2006-2020, draw.io AG
+ * @see EditorUi.js for the UI that uses these actions
+ * @see Menus.js for menu definitions that invoke actions
+ */
+
+/**
+ * Constructs the Actions object for the given EditorUi.
+ *
+ * Actions uses the command pattern to encapsulate user operations.
+ * Each action has a name, execution function, and enabled state.
+ *
+ * @constructor
+ * @param {EditorUi} editorUi - The EditorUi instance these actions belong to.
+ *
+ * @example
+ * // Get and execute an action
+ * editorUi.actions.get('copy').funct();
+ *
+ * // Check if an action is enabled
+ * if (editorUi.actions.get('paste').isEnabled()) { ... }
+ *
+ * // Add a custom action
+ * editorUi.actions.addAction('myAction', function() {
+ *   // Action implementation
+ * });
  */
 function Actions(editorUi)
 {

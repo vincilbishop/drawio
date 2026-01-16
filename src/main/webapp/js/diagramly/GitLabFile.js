@@ -1,6 +1,35 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file GitLabFile.js - GitLab Repository File Handler
+ * @description Handles diagram files stored in GitLab repositories.
+ *
+ * This class provides:
+ * - Save/load diagrams from GitLab repositories
+ * - Version tracking via commit SHA
+ * - Commit message prompts on save
+ * - Project member access link
+ *
+ * GitLabFile extends GitHubFile with GitLab-specific:
+ * - URL format for GitLab web interface
+ * - Project member sharing link format
+ * - Hash encoding for file identification
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends GitHubFile
+ * @see GitLabClient.js for API operations
+ * @see GitLabLibrary.js for shape library variant
+ */
+
+/**
+ * Constructs a new GitLabFile for GitLab repository storage.
+ *
+ * GitLabFile extends GitHubFile with GitLab-specific URL handling
+ * and uses the gitLab peer client.
+ *
+ * @constructor
+ * @extends GitHubFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - File data (XML content).
+ * @param {Object} meta - GitLab file metadata (org, repo, ref, path, sha).
  */
 GitLabFile = function(ui, data, meta)
 {

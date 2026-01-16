@@ -1,6 +1,36 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file OneDriveFile.js - Microsoft OneDrive File Handler
+ * @description Handles diagram files stored in OneDrive/SharePoint.
+ *
+ * This class provides:
+ * - Save/load diagrams from OneDrive/SharePoint
+ * - Version conflict detection via etag
+ * - Real-time collaboration support
+ * - Short autosave delay for optimistic sync
+ *
+ * OneDriveFile supports:
+ * - Personal OneDrive accounts
+ * - OneDrive for Business
+ * - SharePoint document libraries
+ * - Different URL formats per account type
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends DrawioFile
+ * @see OneDriveClient.js for API operations
+ * @see OneDriveLibrary.js for shape library variant
+ */
+
+/**
+ * Constructs a new OneDriveFile for Microsoft storage.
+ *
+ * OneDriveFile wraps a Microsoft Graph API metadata object which contains
+ * file properties, parent references, and web URLs.
+ *
+ * @constructor
+ * @extends DrawioFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - File data (XML content).
+ * @param {Object} meta - Microsoft Graph file metadata.
  */
 OneDriveFile = function(ui, data, meta)
 {

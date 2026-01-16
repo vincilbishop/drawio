@@ -1,13 +1,41 @@
 /**
- * Copyright (c) 2006-2024, JGraph Holdings Ltd
- * Copyright (c) 2006-2024, draw.io AG
+ * @file DropboxClient.js - Dropbox Integration
+ * @description Provides Dropbox storage integration for diagrams.
+ *
+ * This class provides:
+ * - OAuth 2.0 authentication with Dropbox
+ * - File picker for Dropbox browsing
+ * - Save/load diagrams to Dropbox
+ * - Folder creation and navigation
+ * - Retry logic for API failures
+ *
+ * DropboxClient handles:
+ * - App folder storage (/drawio-diagrams/)
+ * - File CRUD operations
+ * - User account information
+ * - Session token management
+ *
+ * @copyright 2006-2024, JGraph Holdings Ltd
+ * @extends DrawioClient
+ * @see DropboxFile.js for file operations
+ * @see DropboxLibrary.js for shape library support
  */
+
 //Add a closure to hide the class private variables without changing the code a lot
 (function()
 {
 
 var _token = null;
 
+/**
+ * Constructs a new DropboxClient for Dropbox integration.
+ *
+ * Initializes the Dropbox SDK client with the application client ID.
+ *
+ * @constructor
+ * @extends DrawioClient
+ * @param {EditorUi} editorUi - The EditorUi instance.
+ */
 window.DropboxClient = function(editorUi)
 {
 	DrawioClient.call(this, editorUi, 'dbauth');

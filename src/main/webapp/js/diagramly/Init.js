@@ -1,9 +1,29 @@
 /**
- * Copyright (c) 2006-2021, JGraph Holdings Ltd
- * Copyright (c) 2006-2021, draw.io AG
+ * @file Init.js - draw.io Application Initialization
+ * @description Global configuration and initialization for the full draw.io application.
+ *
+ * This file sets up:
+ * - URL endpoints for all services (export, save, import, proxy)
+ * - Cloud integration OAuth IDs (Google Drive, Dropbox, GitHub, GitLab)
+ * - Feature flags and browser capability detection
+ * - Resource paths for stencils, templates, and images
+ * - Third-party service URLs (PlantUML, Mermaid, Math rendering)
+ * - Real-time collaboration WebSocket URLs
+ * - Theme and UI configuration
+ *
+ * Configuration variables can be overridden before loading this file
+ * to customize draw.io for different deployment environments.
+ *
+ * This file is loaded AFTER js/grapheditor/Init.js and extends its configuration.
+ *
+ * @copyright 2006-2021, JGraph Holdings Ltd
+ * @copyright 2006-2021, draw.io AG
+ * @see ../grapheditor/Init.js for base configuration
+ * @see App.js for application startup
  */
 
-// urlParams is null when used for embedding
+// Why: urlParams may be null when the editor is embedded in another application.
+// This provides a fallback empty object to prevent errors when checking URL params.
 window.urlParams = window.urlParams || {};
 
 // isLocalStorage controls access to local storage

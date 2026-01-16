@@ -1,15 +1,48 @@
 /**
- * Copyright (c) 2006-2020, JGraph Holdings Ltd
- * Copyright (c) 2006-2020, draw.io AG
+ * @file App.js - Main draw.io Application Class
+ * @description App is the main entry point for the draw.io application.
+ *
+ * This class provides:
+ * - Application startup and initialization
+ * - File management (new, open, save, recent files)
+ * - Cloud storage integration coordination
+ * - User authentication and session management
+ * - Template and example diagram access
+ * - Plugin loading and management
+ * - Error handling and recovery
+ * - Application-level event handling
+ * - Browser tab/window management
+ * - Notification system
+ *
+ * App extends EditorUi and is the top-level class in the inheritance hierarchy:
+ *   EditorUi (grapheditor) -> EditorUi (diagramly) -> App
+ *
+ * @copyright 2006-2020, JGraph Holdings Ltd
+ * @copyright 2006-2020, draw.io AG
+ * @see EditorUi.js for the UI layer this extends
+ * @see Init.js for configuration loaded before App
  */
 
 /**
- * Constructs a new point for the optional x and y coordinates. If no
- * coordinates are given, then the default values for <x> and <y> are used.
+ * Constructs a new App instance.
+ *
+ * App is the main application class that coordinates all draw.io functionality.
+ * It extends EditorUi with file management, cloud storage, and application
+ * lifecycle features.
+ *
  * @constructor
- * @class Implements a basic 2D point. Known subclassers = {@link mxRectangle}.
- * @param {number} x X-coordinate of the point.
- * @param {number} y Y-coordinate of the point.
+ * @extends EditorUi
+ * @param {Editor} [editor] - Editor instance. If null, creates new Editor.
+ * @param {HTMLElement} [container] - DOM container. If null, uses document.body.
+ * @param {boolean} [lightbox] - If true, creates lightbox viewer mode.
+ *   Determined by URL params if not specified.
+ *
+ * @example
+ * // Create the main application
+ * var app = new App();
+ *
+ * // Open a file
+ * app.loadFile(fileDescriptor);
  */
 App = function(editor, container, lightbox)
 {

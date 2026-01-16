@@ -1,14 +1,39 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file StorageLibrary.js - Browser-Stored Shape Library
+ * @description StorageLibrary handles custom shape libraries stored in browser storage.
+ *
+ * This class provides:
+ * - Save/load shape libraries to IndexedDB/localStorage
+ * - Autosave support for library modifications
+ * - Special handling for scratchpad (.scratchpad)
+ * - Type differentiation from diagram files
+ *
+ * StorageLibrary is used when:
+ * - User creates custom shape libraries stored in browser
+ * - Scratchpad stores user-created shapes
+ * - Libraries are saved to "Browser" storage option
+ *
+ * Key difference from StorageFile:
+ * - type='L' (Library) vs type='F' (File)
+ * - Always autosaves changes
+ * - No conflict checking needed
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @see StorageFile.js for base class
+ * @see LocalLibrary.js for device-stored libraries
  */
+
 /**
- * Constructs a new point for the optional x and y coordinates. If no
- * coordinates are given, then the default values for <x> and <y> are used.
+ * Constructs a new StorageLibrary for browser-stored shape libraries.
+ *
+ * StorageLibrary extends StorageFile with library-specific behavior:
+ * autosave enabled, no conflict detection, special scratchpad handling.
+ *
  * @constructor
- * @class Implements a basic 2D point. Known subclassers = {@link mxRectangle}.
- * @param {number} x X-coordinate of the point.
- * @param {number} y Y-coordinate of the point.
+ * @extends StorageFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - Library data (mxlibrary XML format).
+ * @param {string} title - Library title (or ".scratchpad" for scratchpad).
  */
 StorageLibrary = function(ui, data, title)
 {

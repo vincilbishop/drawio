@@ -1,6 +1,50 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file DrawioFile.js - Base File Abstraction
+ * @description DrawioFile is the abstract base class for all file types in draw.io.
+ *
+ * This class provides:
+ * - Common file operations (save, open, close)
+ * - Modified/dirty state tracking
+ * - Autosave management
+ * - File synchronization support
+ * - Conflict detection and resolution
+ * - File statistics tracking
+ * - Title and descriptor management
+ * - Undo/redo integration
+ * - Multi-page document support
+ *
+ * All storage backends (local, cloud) extend this class:
+ * - LocalFile - Browser localStorage
+ * - StorageFile - Browser IndexedDB
+ * - RemoteFile - Files from URLs
+ * - DriveFile - Google Drive
+ * - DropboxFile - Dropbox
+ * - OneDriveFile - Microsoft OneDrive
+ * - GitHubFile - GitHub repositories
+ * - GitLabFile - GitLab repositories
+ * - TrelloFile - Trello attachments
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @copyright 2006-2017, draw.io AG
+ * @see DrawioFileSync.js for synchronization
+ * @see App.js for file management
+ */
+
+/**
+ * Constructs a new DrawioFile instance.
+ *
+ * DrawioFile is the abstract base class for all file types. It manages
+ * file state, autosave, and provides the interface for storage operations.
+ *
+ * @constructor
+ * @extends mxEventSource
+ * @param {EditorUi} ui - The EditorUi instance managing this file.
+ * @param {string} [data=''] - Initial file data (XML content).
+ *
+ * @example
+ * // Subclasses implement specific storage
+ * var file = new LocalFile(ui, data, title);
+ * file.save(true, function() { }, function(err) { });
  */
 DrawioFile = function(ui, data)
 {

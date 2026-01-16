@@ -1,9 +1,32 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
- */
-/**
- * Flow plugin.
+ * @file flow.js - Edge Flow Animation Plugin
+ * @description Adds animated flow effect to edges for visualizing data movement.
+ *
+ * This plugin provides:
+ * - Animated dashed stroke on edges
+ * - Toggle flow via right-click context menu
+ * - Click-to-toggle in chromeless (viewer) mode
+ * - CSS keyframe-based animation
+ *
+ * How It Works:
+ * - Adds 'mxEdgeFlow' CSS class to edge's SVG path
+ * - CSS animation moves stroke-dashoffset continuously
+ * - Creates visual effect of particles moving along edge
+ *
+ * Animation Details:
+ * - Duration: 0.5s per cycle
+ * - Direction: Along edge path
+ * - Dash pattern: 8px stroke-dasharray
+ * - Infinite loop until toggled off
+ *
+ * Integration:
+ * - Edit mode: Right-click edge > Toggle Flow
+ * - Viewer mode: Click edge to toggle
+ * - Works with solid and dashed edges
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
+ * @see animation.js for timeline-based flow control
  */
 Draw.loadPlugin(function(ui)
 {

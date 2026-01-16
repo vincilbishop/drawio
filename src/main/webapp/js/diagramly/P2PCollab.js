@@ -1,6 +1,44 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
+ * @file P2PCollab.js - Peer-to-Peer Real-Time Collaboration
+ * @description Provides real-time collaboration via WebSocket and WebRTC.
+ *
+ * This class provides:
+ * - WebSocket connection for signaling
+ * - Optional WebRTC peer-to-peer data channels
+ * - Real-time cursor position sharing
+ * - Selection highlighting for collaborators
+ * - User presence indicators
+ * - Encrypted message transport
+ *
+ * P2PCollab handles:
+ * - Session management (join/leave)
+ * - Message routing between peers
+ * - Cursor position broadcasting
+ * - Selection state synchronization
+ * - User color assignment
+ * - Connection state recovery
+ *
+ * Collaboration features:
+ * - See other users' cursors in real-time
+ * - See what cells others have selected
+ * - User list with display names
+ * - Activity timeout detection (2 min)
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @see DrawioFileSync.js for file synchronization
+ * @see DiffSync.js for diff-based merging
+ */
+
+/**
+ * Constructs a new P2PCollab instance for real-time collaboration.
+ *
+ * Initializes WebSocket connection and sets up message handlers
+ * for cursor, selection, and presence updates.
+ *
+ * @constructor
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {DrawioFileSync} sync - The file synchronization instance.
+ * @param {string} channelId - Unique channel identifier for the file.
  */
 function P2PCollab(ui, sync, channelId)
 {

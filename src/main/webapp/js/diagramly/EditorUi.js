@@ -1,11 +1,43 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file EditorUi.js - Extended UI Controller
+ * @description Extends the base EditorUi with draw.io-specific UI features.
+ *
+ * This is the largest file in the codebase (563KB) and provides:
+ * - Extended file operations (import, export, share)
+ * - Cloud storage UI integration
+ * - Multi-page document support
+ * - Extended menu and toolbar items
+ * - Template and scratchpad management
+ * - Advanced export options (PDF, PNG, SVG, etc.)
+ * - Embed code generation
+ * - Page setup and printing
+ * - Layer management UI
+ * - Comment system UI
+ * - Find and replace
+ * - Custom shape library UI
+ * - Plugin management UI
+ * - Settings/preferences
+ *
+ * This file extends EditorUi via prototype modification, adding features
+ * on top of the base class from js/grapheditor/EditorUi.js.
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @copyright 2006-2017, draw.io AG
+ * @see ../grapheditor/EditorUi.js for base class
+ * @see App.js for the application that uses this UI
+ */
+
+/**
+ * IIFE that extends EditorUi with draw.io-specific features.
+ *
+ * Why: Uses IIFE to modify EditorUi.prototype without polluting global namespace.
+ * This pattern allows incremental enhancement of the base EditorUi class.
  */
 (function()
 {
 	/**
-	 * Version
+	 * Current draw.io version.
+	 * @type {string}
 	 */
 	EditorUi.VERSION = '@DRAWIO-VERSION@';
 	

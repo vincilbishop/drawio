@@ -1,8 +1,44 @@
 /**
- * Copyright (c) 2006-2012, JGraph Holdings Ltd
+ * @file Sidebar.js - Shape Palette Base Class
+ * @description Sidebar provides the shape palette (left panel) for the draw.io editor.
+ *
+ * This file provides:
+ * - Shape palette container and layout
+ * - Palette/section management (expandable categories)
+ * - Drag-and-drop from palette to graph
+ * - Shape thumbnail generation
+ * - Search functionality
+ * - Tooltip display for shapes
+ * - Scratchpad for user-defined shapes
+ *
+ * The Sidebar uses a temporary graph instance to render shape thumbnails.
+ * Shape libraries are added via addPalette() and related methods.
+ *
+ * Shape library definitions are in js/diagramly/sidebar/Sidebar-*.js files.
+ * See that directory's README.md for the common pattern used across all libraries.
+ *
+ * @copyright 2006-2012, JGraph Holdings Ltd
+ * @see js/diagramly/sidebar/README.md for shape library pattern
+ * @see EditorUi.js for the UI that contains this sidebar
+ * @see Shapes.js for shape definitions
  */
+
 /**
- * Construcs a new sidebar for the given editor.
+ * Constructs a new Sidebar for the given EditorUi.
+ *
+ * The Sidebar manages the shape palette panel, allowing users to drag shapes
+ * onto the graph canvas. It renders shape thumbnails and organizes them into
+ * expandable palette sections.
+ *
+ * @constructor
+ * @param {EditorUi} editorUi - The EditorUi instance this sidebar belongs to.
+ * @param {HTMLElement} container - DOM element to render the sidebar into.
+ *
+ * @example
+ * // Add a shape to the sidebar
+ * sidebar.addPaletteFunctions('myPalette', 'My Shapes', true, [
+ *   sidebar.createVertexTemplateEntry('shape=rect', 100, 50, '', 'Rectangle')
+ * ]);
  */
 function Sidebar(editorUi, container)
 {

@@ -1,6 +1,31 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file DriveLibrary.js - Google Drive Shape Library
+ * @description Handles custom shape libraries stored in Google Drive.
+ *
+ * This class provides:
+ * - Save/load shape libraries to Google Drive
+ * - Autosave support for library modifications
+ * - Integration with Drive file picker
+ *
+ * DriveLibrary extends DriveFile with library-specific behavior:
+ * - Always autosaves (no manual save required)
+ * - Uses same Drive API as diagram files
+ * - Empty open() implementation (libraries don't render)
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @extends DriveFile
+ * @see DriveFile.js for base class
+ * @see DriveClient.js for API operations
+ */
+
+/**
+ * Constructs a new DriveLibrary for Google Drive shape libraries.
+ *
+ * @constructor
+ * @extends DriveFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - Library data (mxlibrary XML format).
+ * @param {Object} desc - Google Drive file descriptor.
  */
 DriveLibrary = function(ui, data, desc)
 {

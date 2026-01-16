@@ -1,14 +1,40 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file StorageFile.js - IndexedDB/Browser Storage File Access
+ * @description StorageFile handles files stored in browser IndexedDB or localStorage.
+ *
+ * This class provides:
+ * - Save/load files to browser IndexedDB (primary) or localStorage (fallback)
+ * - Conflict detection via etag comparison
+ * - Support for both files and libraries (via type property)
+ * - Polling-based synchronization across browser tabs
+ * - Migration from localStorage to IndexedDB
+ *
+ * StorageFile is used when:
+ * - User saves to "Browser" storage option
+ * - Files are stored locally in the browser
+ * - Scratchpad data is persisted
+ *
+ * Storage Structure:
+ * - filesInfo store: Metadata (title, size, lastModified, type)
+ * - files store: Actual file data (title, data)
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @see DrawioFile.js for base class
+ * @see StorageLibrary.js for library variant
+ * @see LocalFile.js for File System Access API storage
  */
+
 /**
- * Constructs a new point for the optional x and y coordinates. If no
- * coordinates are given, then the default values for <x> and <y> are used.
+ * Constructs a new StorageFile for IndexedDB/localStorage storage.
+ *
+ * StorageFile stores diagrams in browser IndexedDB with localStorage fallback.
+ * It uses etag-based conflict detection to handle concurrent edits across tabs.
+ *
  * @constructor
- * @class Implements a basic 2D point. Known subclassers = {@link mxRectangle}.
- * @param {number} x X-coordinate of the point.
- * @param {number} y Y-coordinate of the point.
+ * @extends DrawioFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - Initial file data (XML content).
+ * @param {string} title - File title/name (also used as storage key).
  */
 StorageFile = function(ui, data, title)
 {

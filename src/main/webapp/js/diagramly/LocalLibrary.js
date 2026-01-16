@@ -1,12 +1,38 @@
-// $Id = DriveFile.js,v 1.12 2010-01-02 09 =45 =14 gaudenz Exp $
-// Copyright (c) 2006-2014, JGraph Holdings Ltd
 /**
- * Constructs a new point for the optional x and y coordinates. If no
- * coordinates are given, then the default values for <x> and <y> are used.
+ * @file LocalLibrary.js - Device-Stored Shape Library
+ * @description LocalLibrary handles custom shape libraries stored on the local device.
+ *
+ * This class provides:
+ * - Save/load shape libraries via File System Access API or download
+ * - Manual save workflow (no autosave)
+ * - File-based library identification
+ *
+ * LocalLibrary is used when:
+ * - User opens a .xml library file from device
+ * - User saves library to device storage
+ * - Libraries are managed via file system
+ *
+ * Key difference from StorageLibrary:
+ * - Stored on device filesystem, not browser storage
+ * - No autosave (requires explicit save action)
+ * - Can use File System Access API when available
+ *
+ * @copyright 2006-2014, JGraph Holdings Ltd
+ * @see LocalFile.js for base class
+ * @see StorageLibrary.js for browser-stored libraries
+ */
+
+/**
+ * Constructs a new LocalLibrary for device-stored shape libraries.
+ *
+ * LocalLibrary extends LocalFile for library-specific behavior:
+ * no autosave, file-based hash, empty open() implementation.
+ *
  * @constructor
- * @class Implements a basic 2D point. Known subclassers = {@link mxRectangle}.
- * @param {number} x X-coordinate of the point.
- * @param {number} y Y-coordinate of the point.
+ * @extends LocalFile
+ * @param {EditorUi} ui - The EditorUi instance.
+ * @param {string} data - Library data (mxlibrary XML format).
+ * @param {string} title - Library filename.
  */
 LocalLibrary = function(ui, data, title)
 {

@@ -1,8 +1,36 @@
 /**
- * Copyright (c) 2006-2012, JGraph Holdings Ltd
+ * @file Toolbar.js - Toolbar Component
+ * @description Toolbar provides the top toolbar with quick-access buttons.
+ *
+ * This file provides:
+ * - Toolbar container and layout
+ * - Button creation and management
+ * - Dropdown menus from toolbar
+ * - Button state updates (enabled/disabled/active)
+ * - Zoom controls
+ * - Format picker dropdowns (font, color, line style)
+ *
+ * Toolbar buttons typically invoke Actions when clicked.
+ * Some buttons open dropdown menus or color pickers.
+ *
+ * @copyright 2006-2012, JGraph Holdings Ltd
+ * @see Actions.js for commands invoked by toolbar buttons
+ * @see EditorUi.js for the UI that contains this toolbar
  */
+
 /**
- * Construcs a new toolbar for the given editor.
+ * Constructs a new Toolbar for the given EditorUi.
+ *
+ * The Toolbar displays quick-access buttons at the top of the editor.
+ * Buttons can invoke actions directly or open dropdown menus.
+ *
+ * @constructor
+ * @param {EditorUi} editorUi - The EditorUi instance this toolbar belongs to.
+ * @param {HTMLElement} container - DOM element to render the toolbar into.
+ *
+ * @example
+ * // Add a button to the toolbar
+ * toolbar.addButton('myAction', 'My Button', 'icon.png');
  */
 function Toolbar(editorUi, container)
 {

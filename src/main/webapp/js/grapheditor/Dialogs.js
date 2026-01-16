@@ -1,8 +1,43 @@
 /**
- * Copyright (c) 2006-2012, JGraph Holdings Ltd
+ * @file Dialogs.js - Modal Dialog Components
+ * @description Dialogs provides modal dialog windows for the draw.io editor.
+ *
+ * This file provides:
+ * - OpenDialog - File open dialog
+ * - ColorDialog - Color picker dialog
+ * - AboutDialog - About/version dialog
+ * - EditDataDialog - Cell metadata editing
+ * - TextareaDialog - Multi-line text input
+ * - EditDiagramDialog - Raw XML editing
+ * - ExportDialog - Export options
+ * - PrintDialog - Print settings
+ * - PageSetupDialog - Page configuration
+ * - FilenameDialog - File naming
+ * - LinkDialog - Hyperlink editing
+ * - OutlineWindow - Minimap window
+ * - LayersWindow - Layer management
+ * - LibraryDialog - Shape library import
+ *
+ * Dialogs are shown via EditorUi.showDialog() and closed via hideDialog().
+ *
+ * This class is extended by js/diagramly/Dialogs.js for additional dialogs.
+ *
+ * @copyright 2006-2012, JGraph Holdings Ltd
+ * @see EditorUi.js for dialog display methods
+ * @see js/diagramly/Dialogs.js for extended dialogs
  */
+
 /**
- * Constructs a new open dialog.
+ * Constructs a new OpenDialog for file selection.
+ *
+ * OpenDialog displays a file picker interface, either using local storage
+ * or an iframe-based file selector form.
+ *
+ * @constructor
+ *
+ * @example
+ * var dlg = new OpenDialog();
+ * editorUi.showDialog(dlg.container, 640, 480, true, true);
  */
 var OpenDialog = function()
 {

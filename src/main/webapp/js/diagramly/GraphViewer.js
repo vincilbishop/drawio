@@ -1,13 +1,57 @@
 /**
- * Copyright (c) 2006-2016, JGraph Holdings Ltd
+ * @file GraphViewer.js - Read-Only Diagram Viewer
+ * @description Lightweight viewer for displaying diagrams without editing capabilities.
+ *
+ * This class provides:
+ * - Read-only diagram rendering
+ * - Lightbox mode for full-screen viewing
+ * - Multi-page navigation
+ * - Layer visibility controls
+ * - Zoom and pan interactions
+ * - Link handling
+ * - Tooltip display
+ *
+ * Use Cases:
+ * - Embedding diagrams in web pages
+ * - Lightbox popup viewing
+ * - Static diagram display
+ * - Print preview
+ *
+ * Configuration Options:
+ * - toolbar: Show/hide toolbar
+ * - lightbox: Enable lightbox mode
+ * - zoom: Enable zoom controls
+ * - center: Center diagram in container
+ * - autoFit: Automatically fit to container
+ * - allowZoomIn/Out: Control zoom limits
+ * - layers: Show layer controls
+ * - page: Initial page to display
+ *
+ * Integration:
+ * - Can be created from XML node or string
+ * - Works with compressed and uncompressed data
+ * - Supports MathJax for equations
+ * - Handles custom links and actions
+ *
+ * Documentation:
+ * @see https://www.drawio.com/doc/faq/embed-html-options
+ *
+ * @copyright 2006-2016, JGraph Holdings Ltd
+ * @see Embed.js for embedded graph creation
+ * @see App.js for full editor
  */
 // Disables theme in viewer and lightbox
 Editor.currentTheme = '';
 window.uiTheme = '';
 
 /**
- * No CSS and resources available in embed mode. Parameters and docs:
- * https://www.drawio.com/doc/faq/embed-html-options
+ * Constructs a new GraphViewer for read-only diagram display.
+ *
+ * @constructor
+ * @extends mxEventSource
+ * @param {HTMLElement} container - DOM element to render the diagram in.
+ * @param {Node} xmlNode - XML node containing the diagram data.
+ * @param {Object} graphConfig - Configuration options for the viewer.
  */
 GraphViewer = function(container, xmlNode, graphConfig)
 {

@@ -1,9 +1,39 @@
 /**
- * Copyright (c) 2006-2017, JGraph Holdings Ltd
- * Copyright (c) 2006-2017, draw.io AG
+ * @file Editor.js - Extended Editor Class
+ * @description Extends the base Editor class with draw.io-specific functionality.
+ *
+ * This file provides:
+ * - Sketch/hand-drawn mode support
+ * - Additional icon and image resources
+ * - Extended stencil and shape support
+ * - Lucidchart import compatibility (HTML attributes)
+ * - Custom font handling
+ * - Extended graph configuration
+ * - Additional editor events and handlers
+ * - Math/LaTeX equation support
+ * - Mermaid diagram integration
+ * - PlantUML integration
+ *
+ * This file extends Editor via prototype modification, allowing the base
+ * class from js/grapheditor/Editor.js to be enhanced without subclassing.
+ *
+ * @copyright 2006-2017, JGraph Holdings Ltd
+ * @copyright 2006-2017, draw.io AG
+ * @see ../grapheditor/Editor.js for base class
+ * @see EditorUi.js for the UI that uses this editor
+ */
+
+/**
+ * IIFE that extends Editor with draw.io-specific features.
+ *
+ * Why: Uses IIFE to modify Editor.prototype without polluting global namespace.
+ * This pattern allows the base Editor class to be extended with additional
+ * functionality while keeping the extension code organized.
  */
 (function()
 {
+	// Why: Enable Lucidchart paste compatibility by allowing custom data attributes
+	// that Lucidchart uses to encode shape data in clipboard HTML.
 	if (typeof html4 !== 'undefined')
 	{
 		/**

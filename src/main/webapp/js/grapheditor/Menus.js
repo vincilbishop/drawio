@@ -1,8 +1,40 @@
 /**
- * Copyright (c) 2006-2012, JGraph Holdings Ltd
+ * @file Menus.js - Menu System
+ * @description Menus defines all menu structures for the draw.io editor.
+ *
+ * This file provides:
+ * - Menu bar definitions (File, Edit, View, Arrange, Extras, Help)
+ * - Context menu (right-click) definitions
+ * - Submenu structures
+ * - Menu item creation with icons, shortcuts, and enabled states
+ * - Font family and size menus
+ * - Shape and connector style menus
+ *
+ * Menus work with Actions to execute commands when items are selected.
+ * Each menu item typically invokes an action from Actions.js.
+ *
+ * This class is extended by js/diagramly/Menus.js for additional menus.
+ *
+ * @copyright 2006-2012, JGraph Holdings Ltd
+ * @see Actions.js for command implementations invoked by menus
+ * @see EditorUi.js for the UI that displays these menus
  */
+
 /**
- * Constructs a new graph editor
+ * Constructs a new Menus instance for the given EditorUi.
+ *
+ * Menus creates and manages all menu structures including the menu bar,
+ * context menus, and popup menus throughout the application.
+ *
+ * @constructor
+ * @param {EditorUi} editorUi - The EditorUi instance these menus belong to.
+ *
+ * @example
+ * // Get a menu by name
+ * var fileMenu = editorUi.menus.get('file');
+ *
+ * // Add items to a popup menu
+ * editorUi.menus.addMenuItems(menu, ['cut', 'copy', 'paste'], parent);
  */
 Menus = function(editorUi)
 {

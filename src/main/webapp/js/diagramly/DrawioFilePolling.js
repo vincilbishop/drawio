@@ -1,8 +1,38 @@
 /**
- * Copyright (c) 2006-2024, draw.io AG
- * Copyright (c) 2006-2024, JGraph Holdings Ltd
- * 
- * Class for polling files for changes.
+ * @file DrawioFilePolling.js - File Change Detection via Polling
+ * @description Provides polling-based synchronization for file changes.
+ *
+ * This class provides:
+ * - Periodic polling to detect remote file changes
+ * - Adaptive polling intervals (faster when activity detected)
+ * - Automatic merge of remote changes into local file
+ * - Status updates for collaborative editing indicators
+ *
+ * DrawioFilePolling is used when:
+ * - Real-time sync (P2P/WebSocket) is not available
+ * - File backend only supports polling (e.g., some cloud services)
+ * - Detecting changes across browser tabs for StorageFile
+ *
+ * Polling Strategy:
+ * - Starts with configurable max delay
+ * - Reduces to minPollDelay when activity detected
+ * - Gradually increases back to maxDelay during inactivity
+ * - Retries on error with exponential backoff
+ *
+ * @copyright 2006-2024, draw.io AG
+ * @see DrawioFileSync.js for real-time synchronization
+ * @see DrawioFile.js for file abstraction
+ */
+
+/**
+ * Constructs a new DrawioFilePolling instance.
+ *
+ * Polls the file's backend for changes and merges them when detected.
+ * Works with any DrawioFile that supports getLatestVersionId().
+ *
+ * @constructor
+ * @param {DrawioFile} file - The file to poll for changes.
+ * @param {DrawioFileSync} sync - The sync instance for status updates.
  */
 DrawioFilePolling = function(file, sync)
 {

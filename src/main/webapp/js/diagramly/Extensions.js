@@ -1,11 +1,34 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
+ * @file Extensions.js - Third-Party Format Importers
+ * @description Contains importers for external diagramming tool formats.
+ *
+ * This file provides:
+ * - LucidImporter: Converts Lucidchart clipboard/JSON data
+ * - Shape mapping from Lucidchart to draw.io stencils
+ * - Style conversion for fills, strokes, fonts
+ * - Edge/connector conversion with arrow styles
+ *
+ * Extensions.js handles paste operations from:
+ * - Lucidchart (clipboard data)
+ * - Other formats as paste content
+ *
+ * Note: For file-based imports (VSDX, GraphML, etc.), see the
+ * dedicated converter directories (vsdx/, graphml/, miro/).
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @see vsdx/importer.js for Visio import
+ * @see graphml/mxGraphMlCodec.js for GraphML import
+ * @see miro/MiroImporter.js for Miro import
  */
+
 /**
- * Handles paste from Lucidchart
- * 
- * TODO: Move to dynamic loading minimized plugin.
+ * LucidImporter - Lucidchart Format Converter
+ *
+ * Handles paste operations from Lucidchart by converting their
+ * JSON format to draw.io XML. Maps Lucidchart shapes to equivalent
+ * draw.io stencils and converts styles.
+ *
+ * @namespace
  */
 //This covers version 52 of Lucidchart ("BCUVersion": 52 or "BackwardsCompatibilityStateVersion": 52)
 LucidImporter = {};

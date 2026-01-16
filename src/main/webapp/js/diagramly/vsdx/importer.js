@@ -1,6 +1,28 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
+ * @file importer.js - Microsoft Visio VSDX Import (mxVsdxCodec)
+ * @description Parses VSDX files and converts them to draw.io diagrams.
+ *
+ * This file provides:
+ * - VSDX zip archive parsing
+ * - Visio shape-to-draw.io conversion
+ * - Master shape and stencil handling
+ * - Page layout preservation
+ * - Multi-page document support
+ * - Connection/connector mapping
+ * - Style translation from ShapeSheet
+ *
+ * The mxVsdxCodec class handles:
+ * - OOXML package structure reading
+ * - pages/pages.xml processing
+ * - masters/masters.xml processing
+ * - ShapeSheet cell-to-style mapping
+ * - Geometry path conversion
+ *
+ * Note: This code was generated from Java using JSweet transpiler.
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @see vsdx/VsdxExport.js for VSDX export
+ * @see EditorUi.js for import orchestration
  */
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];

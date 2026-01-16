@@ -50,3 +50,16 @@ src/main/webapp/WEB-INF/lib/protobuf-java-*.jar
 src/main/webapp/WEB-INF/lib/protobuf-java-util-*.jar
 src/main/webapp/WEB-INF/lib/re2j-*.jar
 src/main/webapp/WEB-INF/lib/threetenbp-*.jar
+
+*.backup
+coverage/
+output/
+
+.mcp.json
+
+.samples/
+
+drawio-jsapi
+src/main/webapp-original/
+working-docs/
+src/main/webapp/js/api

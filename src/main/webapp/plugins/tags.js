@@ -1,19 +1,37 @@
 /**
- * Copyright (c) 2020-2025, JGraph Holdings Ltd
- * Copyright (c) 2020-2025, draw.io AG
- */
-/**
- * Tags plugin.
- * 
- * - Set tags via dialog
- * - Toggle hidden tags
- * - Stateless filter
- * 
- * TODO:
- * 
- * - Add hiddenTags to viewState of page
- * - Export to PDF ignores current tags
- * - Sync hiddenTags with removed tags
+ * @file tags.js - Cell Tagging and Filtering Plugin
+ * @description Provides tag-based organization and visibility control for diagram cells.
+ *
+ * This plugin provides:
+ * - Tag assignment to cells
+ * - Tag cloud interface for selection
+ * - Visibility filtering by tags
+ * - Multi-tag support per cell
+ *
+ * Features:
+ * - Hidden Tags Window: Floating panel for tag management
+ * - Tag assignment: Select cells, then click tags to assign
+ * - Tag filtering: Hide cells by clicking tags (when no selection)
+ * - Search/filter: Type to filter available tags
+ * - Common tags: Shows tags shared by all selected cells
+ *
+ * Tag Storage:
+ * - Tags stored as space-separated string in cell's 'tags' attribute
+ * - Retrieved via graph.getTagsForCell(cell)
+ * - Modified via graph.addTagsForCells() / removeTagsForCells()
+ *
+ * Visibility Control:
+ * - Overrides graph.isCellVisible() to filter by hidden tags
+ * - Cells with ANY hidden tag are hidden
+ * - Visibility is stateless (not saved to diagram)
+ *
+ * Known Limitations (TODO):
+ * - hiddenTags not persisted to page viewState
+ * - PDF export ignores current tag visibility
+ * - Hidden tags not synced when tags removed from cells
+ *
+ * @copyright 2020-2025, JGraph Holdings Ltd
+ * @copyright 2020-2025, draw.io AG
  */
 Draw.loadPlugin(function(editorUi)
 {
